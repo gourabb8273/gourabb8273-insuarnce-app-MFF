@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { ModuleFederationPlugin } = require("webpack").container;
+const CopyPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -27,5 +28,6 @@ module.exports = {
       },
     }),
     new HtmlWebpackPlugin({ template: "./public/index.html" }),
+    new CopyPlugin({ patterns: [{ from: "public/_headers", to: "." }] }),
   ],
 };

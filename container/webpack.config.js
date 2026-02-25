@@ -2,11 +2,21 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 const { ModuleFederationPlugin } = require("webpack").container;
 
+const isProd = process.env.NODE_ENV === "production";
+const insuranceDetailsUrl =
+  process.env.REMOTE_INSURANCE_DETAILS_URL || "http://localhost:3001";
+const premiumPaymentUrl =
+  process.env.REMOTE_PREMIUM_PAYMENT_URL || "http://localhost:3002";
+
 module.exports = {
   entry: "./src/index.jsx",
-  mode: "development",
+  mode: isProd ? "production" : "development",
   devServer: { port: 3000, historyApiFallback: true },
-  output: { publicPath: "auto", path: path.resolve(__dirname, "dist"), clean: true },
+  output: {
+    publicPath: "auto",
+    path: path.resolve(__dirname, "dist"),
+    clean: true,
+  },
   resolve: { extensions: [".js", ".jsx"] },
   module: {
     rules: [
@@ -18,8 +28,8 @@ module.exports = {
     new ModuleFederationPlugin({
       name: "container",
       remotes: {
-        insuranceDetails: "insuranceDetails@http://localhost:3001/remoteEntry.js",
-        premiumPayment: "premiumPayment@http://localhost:3002/remoteEntry.js",
+        insuranceDetails: `insuranceDetails@${insuranceDetailsUrl}/remoteEntry.js`,
+        premiumPayment: `premiumPayment@${premiumPaymentUrl}/remoteEntry.js`,
       },
       shared: {
         react: { singleton: true, requiredVersion: false },
