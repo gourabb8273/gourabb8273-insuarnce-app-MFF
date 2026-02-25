@@ -28,6 +28,11 @@ npm start
 
 Runs at **http://localhost:3001**. Works standalone or when consumed by the container at port 3000.
 
+## Live deployment
+
+Deployed on Netlify (standalone): **https://darling-pavlova-d81f8c.netlify.app/**  
+Also used as a remote by the [container app](https://incandescent-brigadeiros-b0199c.netlify.app/). Deploy: one Netlify site, base directory `mfe-insurance-details`, build `npm run build`, publish `dist`, same repo.
+
 ## Build
 
 ```bash

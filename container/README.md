@@ -34,6 +34,11 @@ cd container && npm install && npm start
 
 Container runs at **http://localhost:3000**.
 
+## Live deployment
+
+Full app on Netlify: **https://incandescent-brigadeiros-b0199c.netlify.app/**  
+Uses the two remotes (Insurance Details + Premium Payment) via env vars. Deploy: one Netlify site, base directory `container`, build `npm run build`, publish `dist`; set `REMOTE_INSURANCE_DETAILS_URL` and `REMOTE_PREMIUM_PAYMENT_URL` to the remotes’ Netlify URLs.
+
 ## Build
 
 ```bash

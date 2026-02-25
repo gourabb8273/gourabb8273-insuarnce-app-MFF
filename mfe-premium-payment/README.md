@@ -28,6 +28,11 @@ npm start
 
 Runs at **http://localhost:3002**. Select a policy in the Insurance Details MFE (standalone or in the container) to see payment options.
 
+## Live deployment
+
+Deployed on Netlify (standalone): **https://capable-kleicha-d6de28.netlify.app/**  
+Also used as a remote by the [container app](https://incandescent-brigadeiros-b0199c.netlify.app/). Deploy: one Netlify site, base directory `mfe-premium-payment`, build `npm run build`, publish `dist`, same repo.
+
 ## Build
 
 ```bash
